@@ -17,7 +17,6 @@ export class PostService {
     return this.http.get<Post[]>(url);
    }
 
-
    // get comments based on the index
    getCommentsForPost(index: number): Observable<Comment[]> {
     let url = `http://jsonplaceholder.typicode.com/posts`+`?id=`+index; 
