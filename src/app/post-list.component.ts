@@ -1,4 +1,8 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { PostService } from './post.service';
+
+import { Post } from './post';
+import { Comment } from './comment';
 
 @Component({
    selector: 'post-list',
@@ -7,13 +11,23 @@ import { Component, Output, EventEmitter } from '@angular/core';
 
 export class PostListComponent  {
 
+    posts: Post[];
+    comments: Comment[];
+
    @Output() commentsFound = new EventEmitter();
 
    constructor(private postService: PostService) {}
 
-   ngOnInit(): void {}
+   ngOnInit(): void {
+       this.postService.getAllPosts().subscribe(data => this.posts = data);
+   }
 
-   getComments(index: number): void {}
+   getComments(index: number): void {
+       this.postService.getCommentsForPost(index).subscribe(data => this.comments = data);
+   }
 
-   printComments(comments: Comment[]): void {}
+
+   printComments(comments: Comment[]): void {
+       
+   }
 }

@@ -9,4 +9,14 @@
     </li>
   </ul>
 
+  <h1>Comments</h1>
+  <ul>
+    <li *ngFor='let comment of comments'>
+
+      User : {{ comment.username }}<br />
+      Comment : {{ comment.message }}<br />
+
+    </li>
+  </ul>
+
 </div>
